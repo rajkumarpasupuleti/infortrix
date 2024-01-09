@@ -1,5 +1,6 @@
 import requests
 import time
+import math
 import random
 
 
@@ -30,7 +31,7 @@ class WeatherApp:
             humidity = data['current']['humidity']
             wind=data['current']['wind_kph']
             condition = data['current']['condition']['text']
-            print(f"Temperature: {temperature}°C\nHumidity: {humidity}%\nWind: {wind}Km/h \nCondition: {condition} \nlocaltime: {data['location']['localtime']}")
+            print(f"Temperature: {temperature}°C\nHumidity: {humidity}%\nWind: {wind}Km/h \nCondition: {condition} \nlocaltime: {data['location']['localtime']}\npressure = {data['current']['pressure_mb']}")
         else:
             print("Weather data not available.")
 
