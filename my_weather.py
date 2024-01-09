@@ -1,5 +1,8 @@
 import requests
 import time
+import math
+import random
+
 
 class WeatherApp:
     def __init__(self, api_key):
@@ -28,7 +31,7 @@ class WeatherApp:
             humidity = data['current']['humidity']
             wind=data['current']['wind_kph']
             condition = data['current']['condition']['text']
-            print(f"Temperature: {temperature}°C, Humidity: {humidity}%, Wind: {wind}Km/h ,Condition: {condition} , localtime: {data['location']['localtime']}")
+            print(f"Temperature: {temperature}°C\nHumidity: {humidity}%\nWind: {wind}Km/h \nCondition: {condition} \nlocaltime: {data['location']['localtime']}")
         else:
             print("Weather data not available.")
 
@@ -65,7 +68,9 @@ class WeatherApp:
                 weather_data = self.get_weather(city)
                 print(f"Weather in {city}: ", end="")
                 self.display_weather(weather_data)
-            time.sleep(self.refresh_interval)
+            refresh_interval = random.randint(15, 30)
+            print(f"Next refresh in {refresh_interval} seconds...")
+            time.sleep(refresh_interval)
 
 if __name__ == "__main__":
     api_key="fc534c7dda06456e87275059240201"
